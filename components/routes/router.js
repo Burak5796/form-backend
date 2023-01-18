@@ -1,20 +1,31 @@
 import express from 'express';
-import { postOne, getUser, getOneUser } from '../controller/controller.js';
+import { postOne, getUser,
+        getUserByCount, getUserByName, 
+        deleteUserByName, patchData }
+from '../controller/controller.js';
+
+
 
 const router = express.Router();
-
 
 
 router
     .route('/')
     .get(getUser)
     .post(postOne)
+    
 
 
 router
-    .route('/user/:firstName')
-    .get(getOneUser)
+    .route('/count')
+    .get(getUserByCount)
 
+
+router
+    .route('/name/:firstName')
+    .get(getUserByName)
+    .delete(deleteUserByName)
+    .patch(patchData)
 
 
 

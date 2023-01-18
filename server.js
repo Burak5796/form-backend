@@ -21,11 +21,10 @@ app.use(cors());
 
 mongoose.connect(URI)
     .then(() => console.log('connected to Database'))
-    .catch((err) => console.log('unable to connect to Database'));
+    .catch(() => console.log('unable to connect to Database'));
 
 
 mongoose.connection.on('error', console.log);
-
 
 
 
