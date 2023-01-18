@@ -15,7 +15,7 @@ export const postOne = async (req,res) => {
 
 export const getUser = async (req,res) => {
     try {
-        const allUser = await User.find().select('_v');
+        const allUser = await User.find();
         res.status(200).send(allUser);
     } catch (error) {
         res.status(400).json(error);
