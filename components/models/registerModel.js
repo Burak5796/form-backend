@@ -14,6 +14,9 @@ const registerUser = new Schema({
     currentTeam: {
         type: String
     },
+    debut: {
+        type: String
+    },
     Team:{
         type: String
     },

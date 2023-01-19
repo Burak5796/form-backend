@@ -1,6 +1,10 @@
 import User from "../models/registerModel.js";
 
 
+
+
+// POST
+
 export const postOne = async (req,res) => {
     try {
         const user = req.body;
@@ -12,6 +16,8 @@ export const postOne = async (req,res) => {
 }
 
 
+
+// GET
 
 export const getUser = async (req,res) => {
     try {
@@ -49,7 +55,7 @@ export const getUserByName = async (req,res) => {
 }
 
 
-
+// DELETE
 
 export const deleteUserByName = async (req,res) => {
     try {
@@ -63,12 +69,31 @@ export const deleteUserByName = async (req,res) => {
 }
 
 
+export const deleteOneElement = async (req,res) => {
+    try {
+        const filter = {Team: req.params.lastName};
+        const deleteData = Team;
+        const deleteOne = await User.findOneAndDelete(filter,deleteData,{
+        new: true
+    })
+        res.status(200).send(deleteOne)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+}
+
+
+
+
+// PATCH / UPDATE
 
 export const patchData = async (req,res) => {
     try {
-        const data = await User.findOneAndUpdate({
-            firstName: req.params.firstName
-        })
+        const filter = {firstName: req.params.firstName};
+        const update = {titles: req.body.titles, finalsMVP: req.body.finalsMVP, Team: req.body.Team};
+        const data = await User.findOneAndUpdate(filter,update,{
+            new: true
+        });
         res.status(200).send(data)
     } catch (error) {
         res.status(400).json(error)

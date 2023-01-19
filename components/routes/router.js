@@ -1,7 +1,8 @@
 import express from 'express';
 import { postOne, getUser,
         getUserByCount, getUserByName, 
-        deleteUserByName, patchData }
+        deleteUserByName, patchData,
+        deleteOneElement }
 from '../controller/controller.js';
 
 
@@ -27,7 +28,9 @@ router
     .delete(deleteUserByName)
     .patch(patchData)
 
-
+router
+    .route('/name/:lastName')
+    .delete(deleteOneElement)
 
 
 export default router;
