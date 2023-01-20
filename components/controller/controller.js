@@ -1,3 +1,4 @@
+import create from "prompt-sync";
 import User from "../models/registerModel.js";
 
 
@@ -8,7 +9,7 @@ import User from "../models/registerModel.js";
 export const postOne = async (req,res) => {
     try {
         const user = req.body;
-        const newUser = await User.insertMany(user);
+        const newUser = await User.create(user);
         res.status(200).json(newUser);
     } catch (error) {
         res.status(400).send(error)
@@ -32,8 +33,8 @@ export const getUser = async (req,res) => {
 export const getUserByCount = async (req,res) => {
     try {
         const oneUser = await User.find({
-            titles: {$gte: 4},
-            finalsMVP: {$gte: 4}
+            titles: {$gte: 3},
+            finalsMVP: {$gte: 1}
         });
         res.status(200).send(oneUser);
     } catch (error) {
@@ -59,7 +60,7 @@ export const getUserByName = async (req,res) => {
 
 export const deleteUserByName = async (req,res) => {
     try {
-        const deleteData = await User.deleteMany({
+        const deleteData = await User.deleteOne({
             firstName: req.params.firstName
         })
         res.status(200).send(deleteData)
