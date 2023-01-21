@@ -22,15 +22,12 @@ const registerUser = new Schema({
     },
     Number: {
         type: String,
-        required: true
     },
     titles: {
         type: Number,
-        required: true
     },
     finalsMVP: {
         type: Number,
-        required: true
     }
 });
 
