@@ -16,11 +16,11 @@ const registerUser = new Schema({
         required: true
     },
     email: {
-        type: Number,
+        type: String,
         required: true
     },
     password: {
-        type: Number,
+        type: String,
         required: true
     }
 });

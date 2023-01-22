@@ -12,6 +12,12 @@ const PORT = 4000;
 const URI = process.env.MONGO;
 
 
+let allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Headers', "*");
+    next();
+  }
+app.use(allowCrossDomain);
 
 app.use(express.json());
 app.use(morgan('dev'));
