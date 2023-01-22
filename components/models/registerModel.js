@@ -11,25 +11,16 @@ const registerUser = new Schema({
         type: String,
         required: true
     },
-    currentTeam: {
-        type: String
-    },
-    debut: {
-        type: String
-    },
-    Team:{
-        type: String
-    },
-    Number: {
+    userName: {
         type: String,
         required: true
     },
-    titles: {
-        type: Number,
+    email: {
+        type: String,
         required: true
     },
-    finalsMVP: {
-        type: Number,
+    password:{
+        type: String,
         required: true
     }
 });

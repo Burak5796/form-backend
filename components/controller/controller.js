@@ -1,4 +1,3 @@
-import create from "prompt-sync";
 import User from "../models/registerModel.js";
 
 
