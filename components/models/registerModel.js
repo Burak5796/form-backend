@@ -13,14 +13,13 @@ const registerUser = new Schema({
     },
     userName: {
         type: String,
+    },
+    titles: {
+        type: Number,
         required: true
     },
-    email: {
-        type: String,
-        required: true
-    },
-    password:{
-        type: String,
+    finalsMVP: {
+        type: Number,
         required: true
     }
 });
