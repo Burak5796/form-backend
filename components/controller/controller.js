@@ -1,4 +1,12 @@
 import User from "../models/registerModel.js";
+import dotenv from 'dotenv'; dotenv.config();
+import sgMail from '@sendgrid/mail';
+
+
+
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
 
 
 
@@ -9,6 +17,21 @@ export const postOne = async (req,res) => {
     try {
         const user = req.body;
         const newUser = await User.create(user);
+        const msg = {
+            to: req.body.email, // Change to your recipient
+            from: 'burak.d5796@gmail.com', // Change to your verified sender
+            subject: 'Welcome to ...',
+            text: 'test',
+            html: '<strong>Thanks for Joining us!</strong>',
+          }
+          sgMail
+            .send(msg)
+            .then(() => {
+              console.log('Email sent')
+            })
+            .catch((error) => {
+              console.error(error)
+            })
         res.status(200).json(newUser);
     } catch (error) {
         res.status(400).send(error)
